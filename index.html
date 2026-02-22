@@ -55,7 +55,7 @@ section{padding:5rem 2rem}
 
 /* ABOUT */
 .about{background:var(--bg2)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.about-grid{display:grid;grid-template-columns:1fr;gap:2rem}
 .about-text h3{font-size:1.5rem;color:#fff;margin-bottom:1rem}
 .about-text p{color:var(--text2);margin-bottom:1rem}
 .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
@@ -153,7 +153,6 @@ footer a{color:var(--accent)}
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -205,10 +204,7 @@ footer a{color:var(--accent)}
         <div class="stat"><div class="num">Free</div><div class="label">Quotes</div></div>
       </div>
     </div>
-    <div class="about-img fade-in">
-      <img src="images/diamond-gate.jpg" alt="Decorative diamond pattern security gate by Donny's Welding" loading="lazy">
     </div>
-  </div>
 </div>
 </section>
 
@@ -264,70 +260,9 @@ footer a{color:var(--accent)}
 </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-<div class="container">
-  <div class="section-title fade-in"><h2>Our Work</h2><div class="line"></div><p>Browse some of our recent projects</p></div>
-  <div class="gallery-grid" id="galleryGrid">
-    <div class="gallery-item fade-in" onclick="openLightbox(0)"><img src="images/security-gate-horizontal.jpg" alt="Security gate with horizontal bars" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(1)"><img src="images/diamond-gate.jpg" alt="Decorative diamond pattern gate" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(2)"><img src="images/burglar-bars-window.jpg" alt="Burglar bars on window" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(3)"><img src="images/garden-gate.jpg" alt="Garden gate with spear tops" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(4)"><img src="images/driveway-gates.jpg" alt="Driveway gates" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(5)"><img src="images/window-bars-large.jpg" alt="Large window burglar bars" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(6)"><img src="images/entrance-gates-white.jpg" alt="White entrance gate panels" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(7)"><img src="images/security-door.jpg" alt="Security door" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(8)"><img src="images/gate-fence.jpg" alt="Gate and fence installation" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(9)"><img src="images/passage-gate.jpg" alt="Passage security gate" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(10)"><img src="images/decorative-railing.jpg" alt="Decorative railing" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(11)"><img src="images/braai-stand.jpg" alt="Custom braai stand" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(12)"><img src="images/clothing-rack.jpg" alt="Custom clothing rack" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(13)"><img src="images/bed-frame.jpg" alt="Custom welded bed frame" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-    <div class="gallery-item fade-in" onclick="openLightbox(14)"><img src="images/freezer-hinge.jpg" alt="Welding repair - freezer hinge" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
-  </div>
-</div>
-</section>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
-  <img id="lightboxImg" src="" alt="Gallery image">
-  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
-</div>
 
-<!-- WHY CHOOSE US -->
-<section id="why">
-<div class="container">
-  <div class="section-title fade-in"><h2>Why Choose Donny's Welding</h2><div class="line"></div></div>
-  <div class="why-grid">
-    <div class="why-card fade-in">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-3 3 1.5 1.5L12 18l1.5 1.5L15 18l-3-3z"/><circle cx="12" cy="10" r="3"/><path d="M5 7.5A7.5 7.5 0 0112 2a7.5 7.5 0 017 4.5"/></svg>
-      <h3>30+ Years Experience</h3>
-      <p>Decades of hands-on welding means you get expert craftsmanship every single time.</p>
-    </div>
-    <div class="why-card fade-in">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-      <h3>2-Year Guarantee</h3>
-      <p>Every weld comes with a 2-year guarantee. If it breaks, I fix it - no questions asked.</p>
-    </div>
-    <div class="why-card fade-in">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-      <h3>Affordable Pricing</h3>
-      <p>Quality work at fair prices. No hidden fees, no surprises - just honest value.</p>
-    </div>
-    <div class="why-card fade-in">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      <h3>Free Quotes</h3>
-      <p>Get a free, no-obligation quote. Just tell me what you need and I will give you a fair price.</p>
-    </div>
-    <div class="why-card fade-in">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-      <h3>Custom Designs</h3>
-      <p>Every project is built to your specifications. Your vision, my welding skills - a perfect match.</p>
-    </div>
-  </div>
-</div>
+
 </section>
 
 <!-- CONTACT -->
@@ -389,13 +324,7 @@ window.addEventListener('scroll',()=>{document.getElementById('nav').classList.t
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 
-// Lightbox
-const images=['images/security-gate-horizontal.jpg','images/diamond-gate.jpg','images/burglar-bars-window.jpg','images/garden-gate.jpg','images/driveway-gates.jpg','images/window-bars-large.jpg','images/entrance-gates-white.jpg','images/security-door.jpg','images/gate-fence.jpg','images/passage-gate.jpg','images/decorative-railing.jpg','images/braai-stand.jpg','images/clothing-rack.jpg','images/bed-frame.jpg','images/freezer-hinge.jpg'];
-let current=0;
-function openLightbox(i){current=i;document.getElementById('lightboxImg').src=images[i];document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
-function navLightbox(d){current=(current+d+images.length)%images.length;document.getElementById('lightboxImg').src=images[current]}
-document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLightbox()});
+
 document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('active'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='ArrowRight')navLightbox(1)});
 </script>
 </body>
