@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donny's Welding Projects - 30+ Years of Trusted Craftsmanship</title>
+<meta name="description" content="Professional welding services in Eersteriver, Cape Town. Security gates, burglar bars, custom fabrication. 30+ years experience. 2-year guarantee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#1a1a1a;--bg2:#232323;--bg3:#2a2a2a;--text:#e5e5e5;--text2:#a3a3a3;--accent:#F59E0B;--accent2:#D97706;--accent3:#92400E}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .2s}
+a:hover{color:var(--accent2)}
+img{max-width:100%;display:block}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,26,26,.95);backdrop-filter:blur(10px);border-bottom:1px solid #333;padding:0 2rem;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.5)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{font-size:1.3rem;font-weight:800;color:#fff}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--text2);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:5px}
+.burger span{width:25px;height:2px;background:var(--text);transition:all .3s}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;background:linear-gradient(135deg,#0f0f0f 0%,#1a1a1a 50%,#1f1710 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(245,158,11,.08) 0%,transparent 70%)}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;color:#fff;margin-bottom:.5rem;line-height:1.1}
+.hero h1 span{color:var(--accent)}
+.hero .slogan{font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--accent);font-weight:600;margin-bottom:1rem}
+.hero p{font-size:1.1rem;color:var(--text2);max-width:600px;margin:0 auto 2rem}
+.hero-badges{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
+.hero-badge{display:flex;align-items:center;gap:.5rem;color:var(--text2);font-size:.95rem}
+.hero-badge svg{width:20px;height:20px;color:var(--accent);flex-shrink:0}
+.btn{display:inline-block;padding:.9rem 2.2rem;border-radius:6px;font-weight:600;font-size:1rem;transition:all .3s;border:none;cursor:pointer}
+.btn-primary{background:var(--accent);color:#000}
+.btn-primary:hover{background:var(--accent2);color:#000;transform:translateY(-2px);box-shadow:0 8px 25px rgba(245,158,11,.3)}
+.btn-outline{border:2px solid var(--accent);color:var(--accent);background:transparent;margin-left:1rem}
+.btn-outline:hover{background:var(--accent);color:#000}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.container{max-width:1200px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:3rem}
+.section-title h2{font-size:2.2rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+.section-title .line{width:60px;height:4px;background:var(--accent);margin:0 auto;border-radius:2px}
+.section-title p{color:var(--text2);margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* ABOUT */
+.about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.about-text h3{font-size:1.5rem;color:#fff;margin-bottom:1rem}
+.about-text p{color:var(--text2);margin-bottom:1rem}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.stat{background:var(--bg3);padding:1.2rem;border-radius:8px;text-align:center;border:1px solid #333}
+.stat .num{font-size:2rem;font-weight:800;color:var(--accent)}
+.stat .label{font-size:.85rem;color:var(--text2)}
+.about-img{border-radius:12px;overflow:hidden;border:2px solid #333}
+.about-img img{width:100%;height:400px;object-fit:cover}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.service-card{background:var(--bg2);border:1px solid #333;border-radius:10px;padding:2rem;transition:all .3s;position:relative;overflow:hidden}
+.service-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transition:transform .3s}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:50px;height:50px;background:rgba(245,158,11,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.service-icon svg{width:24px;height:24px;color:var(--accent)}
+.service-card h3{font-size:1.1rem;color:#fff;margin-bottom:.5rem}
+.service-card p{font-size:.9rem;color:var(--text2)}
+
+/* GALLERY */
+.gallery{background:var(--bg2)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.gallery-item{position:relative;border-radius:8px;overflow:hidden;cursor:pointer;aspect-ratio:4/3;border:1px solid #333;transition:all .3s}
+.gallery-item:hover{border-color:var(--accent);transform:scale(1.02)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gallery-item:hover img{transform:scale(1.1)}
+.gallery-item .overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center}
+.gallery-item:hover .overlay{opacity:1}
+.overlay svg{width:30px;height:30px;color:#fff}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:2rem}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:8px;object-fit:contain}
+.lightbox-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:#fff;font-size:2.5rem;cursor:pointer;line-height:1}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(245,158,11,.2);border:none;color:#fff;font-size:2rem;padding:.5rem 1rem;cursor:pointer;border-radius:6px;transition:background .2s}
+.lightbox-nav:hover{background:rgba(245,158,11,.5)}
+.lightbox-prev{left:1rem}
+.lightbox-next{right:1rem}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem}
+.why-card{text-align:center;padding:2rem 1.5rem}
+.why-card svg{width:40px;height:40px;color:var(--accent);margin-bottom:1rem}
+.why-card h3{font-size:1.1rem;color:#fff;margin-bottom:.5rem}
+.why-card p{font-size:.9rem;color:var(--text2)}
+
+/* CONTACT */
+.contact{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start}
+.contact-item svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.contact-item h4{color:#fff;font-size:1rem;margin-bottom:.2rem}
+.contact-item p,.contact-item a{color:var(--text2);font-size:.95rem}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.contact-form input,.contact-form textarea{background:var(--bg);border:1px solid #333;border-radius:6px;padding:.9rem 1rem;color:var(--text);font-family:inherit;font-size:.95rem;transition:border-color .2s}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--accent)}
+.contact-form textarea{min-height:120px;resize:vertical}
+
+/* FOOTER */
+footer{background:#111;padding:2rem;text-align:center;border-top:1px solid #333}
+footer p{color:var(--text2);font-size:.85rem}
+footer a{color:var(--accent)}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:90;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:transform .3s}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:32px;height:32px;fill:#fff}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .burger{display:flex}
+  .nav-links{position:fixed;top:70px;left:0;right:0;background:rgba(26,26,26,.98);flex-direction:column;padding:2rem;gap:1.5rem;transform:translateY(-120%);transition:transform .3s}
+  .nav-links.open{transform:translateY(0)}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+  .btn-outline{margin-left:0;margin-top:.5rem}
+  .hero-buttons{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+  .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+<div class="nav-inner">
+  <a href="#" class="nav-logo">Donny's <span>Welding</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="hero-content fade-in">
+  <p class="slogan">Securing Your World, One Weld at a Time</p>
+  <h1>Donny's <span>Welding</span> Projects</h1>
+  <p>Professional welding and steel fabrication in Eersteriver, Cape Town. Quality craftsmanship backed by 30+ years of hands-on experience and a 2-year guarantee on every job.</p>
+  <div class="hero-badges">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-3 3 1.5 1.5L12 18l1.5 1.5L15 18l-3-3z"/><path d="M5 7.5A7.5 7.5 0 0112 2a7.5 7.5 0 017 4.5"/><circle cx="12" cy="10" r="3"/></svg>
+      30+ Years Experience
+    </div>
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+      2-Year Guarantee
+    </div>
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Eersteriver, Cape Town
+    </div>
+  </div>
+  <div class="hero-buttons">
+    <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+    <a href="tel:0727001622" class="btn btn-outline">Call Now</a>
+  </div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="container">
+  <div class="section-title fade-in"><h2>About Donny</h2><div class="line"></div></div>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <h3>Over Three Decades of Welding Excellence</h3>
+      <p>My name is Donovan Allies, and I have been welding for more than 30 years. What started as a young man's trade has become a lifelong passion. From security gates and burglar bars to custom metal furniture - every project gets the same dedication and attention to detail.</p>
+      <p>Based in Eersteriver, Cape Town, I take pride in delivering work that stands the test of time. That is why every job comes with a 2-year guarantee - because I stand behind the quality of my welds.</p>
+      <p>Whether you need to secure your home or bring a custom design to life, I am here to help. No job is too big or too small.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="num">30+</div><div class="label">Years Experience</div></div>
+        <div class="stat"><div class="num">2yr</div><div class="label">Work Guarantee</div></div>
+        <div class="stat"><div class="num">100%</div><div class="label">Custom Work</div></div>
+        <div class="stat"><div class="num">Free</div><div class="label">Quotes</div></div>
+      </div>
+    </div>
+    <div class="about-img fade-in">
+      <img src="images/diamond-gate.jpg" alt="Decorative diamond pattern security gate by Donny's Welding" loading="lazy">
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="container">
+  <div class="section-title fade-in">
+    <h2>Our Services</h2><div class="line"></div>
+    <p>From security solutions to custom metalwork - we have got you covered</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div>
+      <h3>Security Gates</h3>
+      <p>Custom swing and slider security gates built to protect your home and look great doing it.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 8h20M6 4v16M10 4v16M14 4v16M18 4v16"/></svg></div>
+      <h3>Burglar Bars</h3>
+      <p>Window and door burglar bars - strong, stylish and designed to keep your family safe.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <h3>Slider Gate Installation</h3>
+      <p>Full slider gate installation and fitting - tracks, wheels, and the gate itself.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16M4 20V10M20 20V10"/><path d="M2 10l10-7 10 7"/></svg></div>
+      <h3>Slider Gate Tracks</h3>
+      <p>Track fitting and alignment for smooth, reliable slider gate operation.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <h3>Wheel Replacement</h3>
+      <p>Slider gate wheel replacement to get your gate rolling smoothly again.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+      <h3>Gate Hanging and Fitting</h3>
+      <p>Expert gate hanging and fitting - properly aligned and swinging perfectly every time.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg></div>
+      <h3>Custom Metal Fabrication</h3>
+      <p>Clothing racks, bed frames, braai stands, shelving - if you can dream it, I can weld it.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+      <h3>Welding Repairs</h3>
+      <p>Broken welds, cracked joints, damaged metalwork - I fix it all and make it stronger than before.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+<div class="container">
+  <div class="section-title fade-in"><h2>Our Work</h2><div class="line"></div><p>Browse some of our recent projects</p></div>
+  <div class="gallery-grid" id="galleryGrid">
+    <div class="gallery-item fade-in" onclick="openLightbox(0)"><img src="images/security-gate-horizontal.jpg" alt="Security gate with horizontal bars" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(1)"><img src="images/diamond-gate.jpg" alt="Decorative diamond pattern gate" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(2)"><img src="images/burglar-bars-window.jpg" alt="Burglar bars on window" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(3)"><img src="images/garden-gate.jpg" alt="Garden gate with spear tops" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(4)"><img src="images/driveway-gates.jpg" alt="Driveway gates" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(5)"><img src="images/window-bars-large.jpg" alt="Large window burglar bars" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(6)"><img src="images/entrance-gates-white.jpg" alt="White entrance gate panels" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(7)"><img src="images/security-door.jpg" alt="Security door" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(8)"><img src="images/gate-fence.jpg" alt="Gate and fence installation" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(9)"><img src="images/passage-gate.jpg" alt="Passage security gate" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(10)"><img src="images/decorative-railing.jpg" alt="Decorative railing" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(11)"><img src="images/braai-stand.jpg" alt="Custom braai stand" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(12)"><img src="images/clothing-rack.jpg" alt="Custom clothing rack" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(13)"><img src="images/bed-frame.jpg" alt="Custom welded bed frame" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(14)"><img src="images/freezer-hinge.jpg" alt="Welding repair - freezer hinge" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+  </div>
+</div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+  <img id="lightboxImg" src="" alt="Gallery image">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+</div>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+<div class="container">
+  <div class="section-title fade-in"><h2>Why Choose Donny's Welding</h2><div class="line"></div></div>
+  <div class="why-grid">
+    <div class="why-card fade-in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-3 3 1.5 1.5L12 18l1.5 1.5L15 18l-3-3z"/><circle cx="12" cy="10" r="3"/><path d="M5 7.5A7.5 7.5 0 0112 2a7.5 7.5 0 017 4.5"/></svg>
+      <h3>30+ Years Experience</h3>
+      <p>Decades of hands-on welding means you get expert craftsmanship every single time.</p>
+    </div>
+    <div class="why-card fade-in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+      <h3>2-Year Guarantee</h3>
+      <p>Every weld comes with a 2-year guarantee. If it breaks, I fix it - no questions asked.</p>
+    </div>
+    <div class="why-card fade-in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <h3>Affordable Pricing</h3>
+      <p>Quality work at fair prices. No hidden fees, no surprises - just honest value.</p>
+    </div>
+    <div class="why-card fade-in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <h3>Free Quotes</h3>
+      <p>Get a free, no-obligation quote. Just tell me what you need and I will give you a fair price.</p>
+    </div>
+    <div class="why-card fade-in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+      <h3>Custom Designs</h3>
+      <p>Every project is built to your specifications. Your vision, my welding skills - a perfect match.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<div class="container">
+  <div class="section-title fade-in"><h2>Get In Touch</h2><div class="line"></div><p>Ready to start your project? Reach out for a free quote</p></div>
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <div><h4>Phone</h4><a href="tel:0727001622">072 700 1622</a></div>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        <div><h4>Email</h4><a href="mailto:donovitszky3@gmail.com">donovitszky3@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.164-.261A8 8 0 1112 20z"/></svg>
+        <div><h4>WhatsApp</h4><a href="https://wa.me/27727001622" target="_blank">Send a message</a></div>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div><h4>Location</h4><p>Eersteriver, Cape Town, South Africa</p></div>
+      </div>
+    </div>
+    <form class="contact-form fade-in" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="99fe3144-6538-4e8a-a91e-7011cd405669">
+      <input type="hidden" name="subject" value="New enquiry from Donny's Welding website">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Your Phone Number">
+      <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+      <button type="submit" class="btn btn-primary" style="width:100%">Send Message</button>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Donny's Welding Projects - Eersteriver, Cape Town | <a href="tel:0727001622">072 700 1622</a></p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/27727001622" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.164-.261A8 8 0 1112 20z"/></svg>
+</a>
+
+<script>
+// Mobile nav
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{navLinks.classList.toggle('open');});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+// Nav scroll
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+
+// Fade in on scroll
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Lightbox
+const images=['images/security-gate-horizontal.jpg','images/diamond-gate.jpg','images/burglar-bars-window.jpg','images/garden-gate.jpg','images/driveway-gates.jpg','images/window-bars-large.jpg','images/entrance-gates-white.jpg','images/security-door.jpg','images/gate-fence.jpg','images/passage-gate.jpg','images/decorative-railing.jpg','images/braai-stand.jpg','images/clothing-rack.jpg','images/bed-frame.jpg','images/freezer-hinge.jpg'];
+let current=0;
+function openLightbox(i){current=i;document.getElementById('lightboxImg').src=images[i];document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
+function navLightbox(d){current=(current+d+images.length)%images.length;document.getElementById('lightboxImg').src=images[current]}
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLightbox()});
+document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('active'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='ArrowRight')navLightbox(1)});
+</script>
+</body>
+</html>
