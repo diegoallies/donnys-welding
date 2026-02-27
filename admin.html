@@ -2,236 +2,477 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin - Donny's Welding</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Donny's Welding - Admin</title>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#1a1a1a;--bg2:#232323;--bg3:#2a2a2a;--text:#e5e5e5;--text2:#a3a3a3;--accent:#F59E0B;--accent2:#D97706;--red:#ef4444;--green:#22c55e}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#1a1a1a;--bg2:#232323;--bg3:#2a2a2a;--text:#e5e5e5;--text2:#a3a3a3;--accent:#F59E0B;--accent2:#D97706;--red:#ef4444;--green:#22c55e;--blue:#3b82f6}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--accent)}
 
 /* LOGIN */
-.login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
-.login-box{background:var(--bg2);border:1px solid #333;border-radius:12px;padding:2.5rem;max-width:400px;width:100%;text-align:center}
+#login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
+#login.hidden{display:none}
+.login-box{background:var(--bg2);border:1px solid #333;border-radius:12px;padding:2.5rem;width:100%;max-width:360px;text-align:center}
 .login-box h1{font-size:1.5rem;margin-bottom:.3rem;color:#fff}
 .login-box h1 span{color:var(--accent)}
 .login-box p{color:var(--text2);font-size:.9rem;margin-bottom:1.5rem}
-.login-box input{width:100%;padding:.9rem 1rem;background:var(--bg);border:1px solid #333;border-radius:6px;color:var(--text);font-size:1rem;margin-bottom:1rem;text-align:center}
+.login-box input{width:100%;padding:.9rem 1rem;background:var(--bg);border:1px solid #444;border-radius:8px;color:#fff;font-size:1rem;margin-bottom:1rem}
 .login-box input:focus{outline:none;border-color:var(--accent)}
-.login-box button{width:100%;padding:.9rem;background:var(--accent);color:#000;border:none;border-radius:6px;font-size:1rem;font-weight:600;cursor:pointer}
+.login-box button{width:100%;padding:.9rem;background:var(--accent);color:#000;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer}
 .login-box button:hover{background:var(--accent2)}
 .login-error{color:var(--red);font-size:.85rem;margin-top:.5rem;display:none}
 
 /* ADMIN PANEL */
-.admin-panel{display:none}
-.admin-header{background:var(--bg2);border-bottom:1px solid #333;padding:1rem 1.5rem;position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-.admin-header h1{font-size:1.2rem;color:#fff}
+#admin{display:none;padding:1rem;max-width:1200px;margin:0 auto}
+#admin.active{display:block}
+.admin-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #333}
+.admin-header h1{font-size:1.3rem;color:#fff}
 .admin-header h1 span{color:var(--accent)}
-.header-actions{display:flex;gap:.5rem;flex-wrap:wrap}
-.btn{padding:.6rem 1.2rem;border-radius:6px;font-weight:600;font-size:.85rem;border:none;cursor:pointer;transition:all .2s}
-.btn-restore{background:var(--green);color:#fff}
-.btn-restore:hover{opacity:.85}
-.btn-logout{background:#333;color:var(--text2)}
-.btn-logout:hover{background:#444}
+.admin-actions{display:flex;gap:.5rem;flex-wrap:wrap}
+.btn{padding:.7rem 1.2rem;border:none;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:all .2s}
+.btn:active{transform:scale(.96)}
+.btn-upload{background:var(--green);color:#fff}
+.btn-save{background:var(--blue);color:#fff}
+.btn-save:disabled{opacity:.5;cursor:not-allowed}
+.btn-logout{background:#555;color:#fff}
+.btn-upload:hover{filter:brightness(1.1)}
+.btn-save:hover:not(:disabled){filter:brightness(1.1)}
 
-/* INFO BAR */
-.info-bar{background:var(--bg3);border-bottom:1px solid #333;padding:.8rem 1.5rem;font-size:.85rem;color:var(--text2)}
-.info-bar strong{color:var(--accent)}
+/* STATUS */
+#status{margin-bottom:1rem;padding:1rem;border-radius:8px;display:none;font-size:.9rem;line-height:1.5}
+#status.info{display:block;background:rgba(59,130,246,.15);border:1px solid var(--blue);color:var(--blue)}
+#status.success{display:block;background:rgba(34,197,94,.15);border:1px solid var(--green);color:var(--green)}
+#status.error{display:block;background:rgba(239,68,68,.15);border:1px solid var(--red);color:var(--red)}
+
+/* PROGRESS */
+#progress{display:none;margin-bottom:1rem}
+#progress.active{display:block}
+.progress-bar{height:6px;background:#333;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .3s;width:0}
+#progress-text{font-size:.8rem;color:var(--text2);margin-top:.3rem}
 
 /* GALLERY GRID */
-.admin-gallery{padding:1.5rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
-.admin-item{position:relative;border-radius:8px;overflow:hidden;border:2px solid #333;aspect-ratio:4/3;background:var(--bg2)}
-.admin-item img{width:100%;height:100%;object-fit:contain}
-.admin-item.hidden-item{opacity:.35;border-color:var(--red)}
-.admin-item .item-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.8);padding:.3rem .5rem;font-size:.7rem;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.delete-btn{position:absolute;top:6px;right:6px;width:36px;height:36px;background:var(--red);color:#fff;border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.5);transition:transform .2s}
-.delete-btn:hover{transform:scale(1.15)}
-.restore-btn{position:absolute;top:6px;right:6px;width:36px;height:36px;background:var(--green);color:#fff;border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.5)}
-.hidden-badge{position:absolute;top:6px;left:6px;background:var(--red);color:#fff;font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:4px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.8rem}
+@media(min-width:600px){.gallery-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+.gallery-card{position:relative;background:var(--bg2);border:1px solid #333;border-radius:8px;overflow:hidden;aspect-ratio:4/3}
+.gallery-card img{width:100%;height:100%;object-fit:cover}
+.gallery-card.pending-delete{opacity:.4;border-color:var(--red)}
+.gallery-card.pending-upload{border-color:var(--green);border-width:2px}
+.card-badge{position:absolute;top:6px;left:6px;padding:2px 8px;border-radius:4px;font-size:.7rem;font-weight:700;text-transform:uppercase}
+.badge-new{background:var(--green);color:#fff}
+.badge-delete{background:var(--red);color:#fff}
+.card-actions{position:absolute;bottom:0;left:0;right:0;padding:.5rem;display:flex;justify-content:flex-end;gap:.3rem;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.card-btn{width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .2s}
+.card-btn:active{transform:scale(.9)}
+.btn-delete{background:var(--red);color:#fff}
+.btn-restore{background:var(--green);color:#fff}
+.card-name{position:absolute;bottom:.5rem;left:.5rem;right:3rem;font-size:.7rem;color:#fff;text-shadow:0 1px 3px #000;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-/* TOAST */
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--accent);color:var(--text);padding:.8rem 1.5rem;border-radius:8px;font-size:.9rem;z-index:100;opacity:0;transition:opacity .3s;pointer-events:none}
-.toast.show{opacity:1}
+/* LOADING */
+#loading{display:flex;align-items:center;justify-content:center;padding:4rem;color:var(--text2)}
+.spinner{width:30px;height:30px;border:3px solid #333;border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin-right:1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-@media(max-width:500px){
-  .admin-gallery{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.8rem;padding:1rem}
-  .admin-header{padding:.8rem 1rem}
-  .admin-header h1{font-size:1rem}
-}
+/* CHANGES COUNTER */
+.changes-badge{background:var(--accent);color:#000;border-radius:12px;padding:1px 7px;font-size:.75rem;font-weight:700;margin-left:.3rem}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- LOGIN -->
-<div class="login-screen" id="loginScreen">
+<!-- LOGIN SCREEN -->
+<div id="login">
   <div class="login-box">
     <h1>Donny's <span>Welding</span></h1>
-    <p>Admin Panel — Enter password to continue</p>
-    <input type="password" id="pwInput" placeholder="Password" autofocus>
-    <button onclick="tryLogin()">Log In</button>
-    <div class="login-error" id="loginError">Wrong password. Try again.</div>
+    <p>Admin Panel</p>
+    <input type="password" id="pwd" placeholder="Enter password" autofocus>
+    <input type="password" id="ghtoken" placeholder="GitHub token" style="margin-top:.5rem">
+    <button onclick="doLogin()">Login</button>
+    <div class="login-error" id="loginErr">Incorrect password</div>
   </div>
 </div>
 
-<!-- ADMIN -->
-<div class="admin-panel" id="adminPanel">
+<!-- ADMIN PANEL -->
+<div id="admin">
   <div class="admin-header">
-    <h1>🔧 <span>Gallery</span> Admin</h1>
-    <div class="header-actions">
-      <button class="btn btn-restore" onclick="restoreAll()">↩ Restore All</button>
+    <h1>🔧 Donny's <span>Welding</span> Admin</h1>
+    <div class="admin-actions">
+      <button class="btn btn-upload" onclick="document.getElementById('fileInput').click()">➕ Upload</button>
+      <input type="file" id="fileInput" accept="image/*" multiple style="display:none" onchange="handleUpload(this.files)">
+      <button class="btn btn-save" id="saveBtn" onclick="saveChanges()" disabled>💾 Save<span class="changes-badge" id="changeCount" style="display:none">0</span></button>
       <button class="btn btn-logout" onclick="logout()">Logout</button>
     </div>
   </div>
-  <div class="info-bar">
-    Tap the <strong>red ✕</strong> to hide a photo from the website. Hidden photos can be restored with the <strong>green ↩</strong> button.
-    <br>Changes take effect immediately on the main site (same browser/device).
-  </div>
-  <div class="admin-gallery" id="adminGallery"></div>
+
+  <div id="status"></div>
+  <div id="progress"><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div><div id="progress-text"></div></div>
+  <div id="loading"><div class="spinner"></div>Loading gallery...</div>
+  <div class="gallery-grid" id="galleryGrid"></div>
 </div>
 
-<div class="toast" id="toast"></div>
-
 <script>
-const PASS='donny2025';
-const STORAGE_KEY='donnys-hidden-gallery';
+const OWNER = 'diegoallies';
+const REPO = 'donnys-welding';
+const BRANCH = 'master';
+let TOKEN = '';
+const API = 'https://api.github.com';
+const PASSWORD = 'donny2025';
 
-// All gallery images from index.html
-const galleryItems=[
-  {src:'images/security-gate-horizontal.jpg',alt:'Security gate with horizontal bars'},
-  {src:'images/diamond-gate.jpg',alt:'Decorative diamond pattern gate'},
-  {src:'images/burglar-bars-window.jpg',alt:'Burglar bars on window'},
-  {src:'images/garden-gate.jpg',alt:'Garden gate with spear tops'},
-  {src:'images/driveway-gates.jpg',alt:'Driveway gates'},
-  {src:'images/window-bars-large.jpg',alt:'Large window burglar bars'},
-  {src:'images/entrance-gates-white.jpg',alt:'White entrance gate panels'},
-  {src:'images/security-door.jpg',alt:'Security door'},
-  {src:'images/gate-fence.jpg',alt:'Gate and fence installation'},
-  {src:'images/passage-gate.jpg',alt:'Passage security gate'},
-  {src:'images/decorative-railing.jpg',alt:'Decorative railing'},
-  {src:'images/braai-stand.jpg',alt:'Custom braai stand'},
-  {src:'images/flip-braai.jpg',alt:'Custom flip braai'},
-  {src:'images/clothing-rack.jpg',alt:'Custom clothing rack'},
-  {src:'images/bed-frame.jpg',alt:'Custom welded bed frame'},
-  {src:'images/freezer-hinge.jpg',alt:'Welding repair - freezer hinge'},
-  {src:'images/slider-gate-track.jpg',alt:'Slider gate with track installation'},
-  {src:'images/braai-grid.jpg',alt:'Custom braai grid'},
-  {src:'images/pool-fencing.jpg',alt:'Fixed panel and sliding gate'},
-  {src:'images/metal-chair.jpg',alt:'Custom metal chair'},
-  {src:'images/window-awning.jpg',alt:'Window awning installation'},
-  {src:'images/window-burglar-bars.jpg',alt:'Window burglar bars'},
-  {src:'images/side-gate.jpg',alt:'Side entrance security gate'},
-  {src:'images/coffee-table-finished.jpg',alt:'Custom coffee table'},
-  {src:'images/table-frame.jpg',alt:'Coffee table steel frame'},
-  {src:'images/bar-chair.jpg',alt:'Custom bar chair'},
-  {src:'images/round-table-1.jpg',alt:'Round pedestal table'},
-  {src:'images/round-table-2.jpg',alt:'Round pedestal table detail'},
-  {src:'images/garden-bench-1.jpg',alt:'Swing chair converted to garden bench'},
-  {src:'images/garden-bench-2.jpg',alt:'Garden bench - front view'},
-  {src:'images/spear-top-driveway-gate.jpg',alt:'Driveway gate with spear tops'},
-  {src:'images/single-bed-frame.jpg',alt:'Custom single bed frame'},
-  {src:'images/queen-bed-base.jpg',alt:'Queen size steel bed base'},
-  {src:'images/decorative-swing-gate.jpg',alt:'Slider gate with decorative scrolls'},
-  {src:'images/burglar-bars-lock.jpg',alt:'Burglar bars'},
-  {src:'images/window-bars-exterior.jpg',alt:'Window burglar bars - exterior'},
-  {src:'images/window-bars-white.jpg',alt:'White window burglar bars'},
-  {src:'images/door-gate-decorative.jpg',alt:'Door gate with decorative scrolls'},
-  {src:'images/carport-balustrade.jpg',alt:'Carport balustrade fencing'},
-  {src:'images/entrance-security-gate.jpg',alt:'Entrance security gate'},
-  {src:'images/double-security-gate.jpg',alt:'Double security gate entrance'},
-  {src:'images/shoe-rack-stand.jpg',alt:'Custom shoe rack and clothing stand'},
-  {src:'images/indoor-railing.jpg',alt:'Indoor safety railing'},
-  {src:'images/large-window-bars.jpg',alt:'Large window burglar bars'},
-  {src:'images/brick-pattern-gate.jpg',alt:'Brick pattern security gate'},
-  {src:'images/diamond-door-gate.jpg',alt:'Diamond pattern door gate'},
-  {src:'images/white-security-gate.jpg',alt:'White security gate'},
-  {src:'images/white-gate-panel.jpg',alt:'White gate panel with scrolls'},
-  {src:'images/palisade-fencing.jpg',alt:'Palisade fencing with spear tops'},
-  {src:'images/bathroom-burglar-bars.jpg',alt:'Bathroom window burglar bars'},
-  {src:'images/window-bars-grey.jpg',alt:'Window burglar bars - grey'},
-  {src:'images/wall-fencing-street.jpg',alt:'Wall top fencing'},
-  {src:'images/fencing-with-gate.jpg',alt:'Property fencing with gate'},
-  {src:'images/back-door-gate-black.jpg',alt:'Back door security gate'},
-  {src:'images/door-gate-white.jpg',alt:'White door security gate'},
-  {src:'images/pedestrian-gate-spear.jpg',alt:'Pedestrian gate with spear tops'},
-  {src:'images/passage-gate-black.jpg',alt:'Passage security gate'},
-  {src:'images/diamond-security-door.jpg',alt:'Diamond pattern security door'},
-  {src:'images/carport-gate-system.jpg',alt:'Carport gate system'},
-  {src:'images/solid-panel-gate.jpg',alt:'Solid panel security gate'},
-  {src:'images/pallet-breaker-tool.jpg',alt:'Pallet buster'},
-];
+let galleryImages = []; // {path, sha, url, alt, isNew, file, base64, deleted}
+let pendingChanges = 0;
 
-function getHidden(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]}catch{return[]}}
-function setHidden(arr){localStorage.setItem(STORAGE_KEY,JSON.stringify(arr))}
-
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}
-
-function tryLogin(){
-  const pw=document.getElementById('pwInput').value;
-  if(pw===PASS){
-    sessionStorage.setItem('donnys-admin','1');
-    showAdmin();
-  }else{
-    document.getElementById('loginError').style.display='block';
-    document.getElementById('pwInput').value='';
+// --- AUTH ---
+function doLogin() {
+  const pwd = document.getElementById('pwd').value;
+  const tokenVal = document.getElementById('ghtoken').value.trim();
+  if (pwd === PASSWORD && tokenVal) {
+    TOKEN = tokenVal;
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('admin').classList.add('active');
+    loadGallery();
+  } else {
+    const err = document.getElementById('loginErr');
+    err.style.display = 'block';
+    setTimeout(() => err.style.display = 'none', 2000);
   }
 }
-document.getElementById('pwInput').addEventListener('keydown',e=>{if(e.key==='Enter')tryLogin()});
+document.getElementById('pwd').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
 
-function logout(){sessionStorage.removeItem('donnys-admin');location.reload()}
-
-function showAdmin(){
-  document.getElementById('loginScreen').style.display='none';
-  document.getElementById('adminPanel').style.display='block';
-  renderGallery();
+function logout() {
+  document.getElementById('login').classList.remove('hidden');
+  document.getElementById('admin').classList.remove('active');
+  document.getElementById('pwd').value = '';
 }
 
-function renderGallery(){
-  const hidden=getHidden();
-  const grid=document.getElementById('adminGallery');
-  grid.innerHTML='';
-  galleryItems.forEach(item=>{
-    const isHidden=hidden.includes(item.src);
-    const div=document.createElement('div');
-    div.className='admin-item'+(isHidden?' hidden-item':'');
-    const fname=item.src.split('/').pop();
-    div.innerHTML=`
-      <img src="${item.src}" alt="${item.alt}" loading="lazy">
-      <div class="item-label">${fname}</div>
-      ${isHidden
-        ?`<span class="hidden-badge">HIDDEN</span><button class="restore-btn" onclick="restoreItem('${item.src}')" title="Restore">↩</button>`
-        :`<button class="delete-btn" onclick="hideItem('${item.src}')" title="Hide from website">✕</button>`
-      }
-    `;
-    grid.appendChild(div);
+// --- GITHUB API HELPERS ---
+async function ghFetch(path, opts = {}) {
+  const res = await fetch(`${API}${path}`, {
+    ...opts,
+    headers: { 'Authorization': `token ${TOKEN}`, 'Accept': 'application/vnd.github.v3+json', ...(opts.headers || {}) }
   });
+  if (!res.ok) throw new Error(`GitHub API ${res.status}: ${await res.text()}`);
+  return res.json();
 }
 
-function hideItem(src){
-  if(!confirm('Hide this photo from the website?'))return;
-  const hidden=getHidden();
-  if(!hidden.includes(src))hidden.push(src);
-  setHidden(hidden);
-  renderGallery();
-  toast('Photo hidden from website');
+// --- LOAD GALLERY ---
+async function loadGallery() {
+  const loading = document.getElementById('loading');
+  const grid = document.getElementById('galleryGrid');
+  loading.style.display = 'flex';
+  grid.innerHTML = '';
+  galleryImages = [];
+
+  try {
+    // Get index.html to parse gallery items
+    const indexFile = await ghFetch(`/repos/${OWNER}/${REPO}/contents/index.html?ref=${BRANCH}`);
+    const html = atob(indexFile.content.replace(/\n/g, ''));
+    
+    // Parse gallery items from HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const items = doc.querySelectorAll('.gallery-item');
+    
+    // Get image files with their SHAs
+    let imageFiles = {};
+    try {
+      const imagesDir = await ghFetch(`/repos/${OWNER}/${REPO}/contents/images?ref=${BRANCH}`);
+      imagesDir.forEach(f => { imageFiles[f.name] = { sha: f.sha, download_url: f.download_url }; });
+    } catch(e) {}
+
+    items.forEach((item, i) => {
+      const img = item.querySelector('img');
+      if (!img) return;
+      const src = img.getAttribute('src') || '';
+      const alt = img.getAttribute('alt') || '';
+      const filename = src.split('/').pop();
+      const fileInfo = imageFiles[filename] || {};
+      galleryImages.push({
+        path: src,
+        filename,
+        sha: fileInfo.sha || null,
+        url: fileInfo.download_url || src,
+        alt,
+        isNew: false,
+        deleted: false,
+        index: i
+      });
+    });
+
+    renderGallery();
+    showStatus('', '');
+  } catch (err) {
+    showStatus(`Failed to load gallery: ${err.message}`, 'error');
+  }
+  loading.style.display = 'none';
 }
 
-function restoreItem(src){
-  const hidden=getHidden().filter(s=>s!==src);
-  setHidden(hidden);
-  renderGallery();
-  toast('Photo restored');
+// --- RENDER ---
+function renderGallery() {
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = '';
+
+  galleryImages.forEach((img, idx) => {
+    const card = document.createElement('div');
+    card.className = 'gallery-card' + (img.deleted ? ' pending-delete' : '') + (img.isNew ? ' pending-upload' : '');
+    
+    const imgEl = document.createElement('img');
+    imgEl.src = img.isNew ? img.previewUrl : img.url;
+    imgEl.alt = img.alt;
+    imgEl.loading = 'lazy';
+    card.appendChild(imgEl);
+
+    // Badge
+    if (img.isNew) {
+      const badge = document.createElement('div');
+      badge.className = 'card-badge badge-new';
+      badge.textContent = 'NEW';
+      card.appendChild(badge);
+    } else if (img.deleted) {
+      const badge = document.createElement('div');
+      badge.className = 'card-badge badge-delete';
+      badge.textContent = 'DELETE';
+      card.appendChild(badge);
+    }
+
+    // Name
+    const name = document.createElement('div');
+    name.className = 'card-name';
+    name.textContent = img.filename;
+    card.appendChild(name);
+
+    // Actions
+    const actions = document.createElement('div');
+    actions.className = 'card-actions';
+    
+    if (img.deleted) {
+      const restoreBtn = document.createElement('button');
+      restoreBtn.className = 'card-btn btn-restore';
+      restoreBtn.innerHTML = '↩';
+      restoreBtn.title = 'Restore';
+      restoreBtn.onclick = () => { img.deleted = false; updateChanges(); renderGallery(); };
+      actions.appendChild(restoreBtn);
+    } else {
+      const delBtn = document.createElement('button');
+      delBtn.className = 'card-btn btn-delete';
+      delBtn.innerHTML = '✕';
+      delBtn.title = 'Delete';
+      delBtn.onclick = () => {
+        if (img.isNew) {
+          galleryImages.splice(idx, 1);
+        } else {
+          img.deleted = true;
+        }
+        updateChanges();
+        renderGallery();
+      };
+      actions.appendChild(delBtn);
+    }
+    card.appendChild(actions);
+    grid.appendChild(card);
+  });
+
+  updateChanges();
 }
 
-function restoreAll(){
-  if(!confirm('Restore ALL hidden photos?'))return;
-  setHidden([]);
-  renderGallery();
-  toast('All photos restored');
+function updateChanges() {
+  pendingChanges = galleryImages.filter(i => i.deleted || i.isNew).length;
+  const badge = document.getElementById('changeCount');
+  const saveBtn = document.getElementById('saveBtn');
+  if (pendingChanges > 0) {
+    badge.style.display = 'inline';
+    badge.textContent = pendingChanges;
+    saveBtn.disabled = false;
+  } else {
+    badge.style.display = 'none';
+    saveBtn.disabled = true;
+  }
 }
 
-// Auto-login if session active
-if(sessionStorage.getItem('donnys-admin')==='1')showAdmin();
+// --- UPLOAD ---
+function handleUpload(files) {
+  Array.from(files).forEach(file => {
+    if (!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const base64 = e.target.result.split(',')[1];
+      const ext = file.name.split('.').pop().toLowerCase();
+      const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '-').toLowerCase();
+      // Avoid duplicates
+      let finalName = safeName;
+      let counter = 1;
+      while (galleryImages.some(i => i.filename === finalName && !i.deleted)) {
+        finalName = safeName.replace(`.${ext}`, `-${counter}.${ext}`);
+        counter++;
+      }
+      galleryImages.push({
+        path: `images/${finalName}`,
+        filename: finalName,
+        alt: finalName.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '),
+        isNew: true,
+        deleted: false,
+        base64,
+        previewUrl: e.target.result,
+        file
+      });
+      renderGallery();
+    };
+    reader.readAsDataURL(file);
+  });
+  document.getElementById('fileInput').value = '';
+}
+
+// --- SAVE (GitHub Git Trees API for batch commit) ---
+async function saveChanges() {
+  if (pendingChanges === 0) return;
+  const saveBtn = document.getElementById('saveBtn');
+  saveBtn.disabled = true;
+  showProgress(0, 'Starting save...');
+
+  try {
+    // 1. Get current branch ref
+    showProgress(10, 'Getting branch info...');
+    const ref = await ghFetch(`/repos/${OWNER}/${REPO}/git/refs/heads/${BRANCH}`);
+    const latestCommitSha = ref.object.sha;
+
+    // 2. Get the commit to find tree
+    const commit = await ghFetch(`/repos/${OWNER}/${REPO}/git/commits/${latestCommitSha}`);
+    const baseTreeSha = commit.tree.sha;
+
+    // 3. Create blobs for new images
+    showProgress(20, 'Uploading new images...');
+    const newImages = galleryImages.filter(i => i.isNew);
+    const deletedImages = galleryImages.filter(i => i.deleted);
+    
+    const blobPromises = newImages.map(async (img) => {
+      const blob = await ghFetch(`/repos/${OWNER}/${REPO}/git/blobs`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: img.base64, encoding: 'base64' })
+      });
+      return { path: img.path, sha: blob.sha, mode: '100644', type: 'blob' };
+    });
+    const newBlobs = await Promise.all(blobPromises);
+    showProgress(50, 'Updating index.html...');
+
+    // 4. Build updated index.html
+    const indexFile = await ghFetch(`/repos/${OWNER}/${REPO}/contents/index.html?ref=${BRANCH}`);
+    let html = atob(indexFile.content.replace(/\n/g, ''));
+
+    // Remove deleted gallery items
+    deletedImages.forEach(img => {
+      // Remove the gallery-item div containing this image
+      const regex = new RegExp(`\\s*<div class="gallery-item[^"]*"[^>]*>\\s*<img src="${img.path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*>.*?</div>\\s*</div>`, 'gs');
+      html = html.replace(regex, '');
+    });
+
+    // Add new gallery items before closing </div> of gallery-grid
+    const newItemsHtml = newImages.map((img, i) => {
+      const idx = galleryImages.filter(x => !x.deleted).length - newImages.length + i;
+      return `\n    <div class="gallery-item fade-in" onclick="openLightbox(${idx})"><img src="${img.path}" alt="${img.alt}" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>`;
+    }).join('');
+
+    if (newItemsHtml) {
+      // Find the last gallery-item and insert after it, or before closing gallery-grid div
+      const galleryGridEnd = html.lastIndexOf('</div>', html.indexOf('<!-- WHY') > -1 ? html.indexOf('<!-- WHY') : html.indexOf('id="why"'));
+      // Simpler: insert before the last </div> in the gallery section
+      const gallerySectionMatch = html.match(/([\s\S]*<div class="gallery-grid"[^>]*>)([\s\S]*?)(<\/div>\s*<\/section>\s*(?:<!--\s*WHY|<section))/);
+      if (gallerySectionMatch) {
+        html = gallerySectionMatch[1] + gallerySectionMatch[2] + newItemsHtml + '\n  ' + gallerySectionMatch[3];
+      }
+    }
+
+    // Fix lightbox indices
+    let lightboxIdx = 0;
+    html = html.replace(/openLightbox\(\d+\)/g, () => `openLightbox(${lightboxIdx++})`);
+
+    // Also update the galleryImages array in the script section
+    // Find and update the images array for the lightbox
+    const activeImages = galleryImages.filter(i => !i.deleted);
+    const imgArrayStr = activeImages.map(i => `'${i.path}'`).join(',');
+    html = html.replace(/const images\s*=\s*\[([^\]]*)\]/, `const images = [${imgArrayStr}]`);
+
+    showProgress(60, 'Creating commit...');
+
+    // 5. Create blob for updated index.html
+    const indexBlob = await ghFetch(`/repos/${OWNER}/${REPO}/git/blobs`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: btoa(unescape(encodeURIComponent(html))), encoding: 'base64' })
+    });
+
+    // 6. Build tree
+    const treeItems = [
+      { path: 'index.html', mode: '100644', type: 'blob', sha: indexBlob.sha },
+      ...newBlobs
+    ];
+    // For deletions, set sha to null
+    deletedImages.forEach(img => {
+      treeItems.push({ path: img.path, mode: '100644', type: 'blob', sha: null });
+    });
+
+    showProgress(70, 'Building tree...');
+    const tree = await ghFetch(`/repos/${OWNER}/${REPO}/git/trees`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ base_tree: baseTreeSha, tree: treeItems })
+    });
+
+    // 7. Create commit
+    showProgress(85, 'Committing...');
+    const parts = [];
+    if (deletedImages.length) parts.push(`deleted ${deletedImages.length} image${deletedImages.length > 1 ? 's' : ''}`);
+    if (newImages.length) parts.push(`added ${newImages.length} image${newImages.length > 1 ? 's' : ''}`);
+    const msg = `Gallery update: ${parts.join(', ')}`;
+
+    const newCommit = await ghFetch(`/repos/${OWNER}/${REPO}/git/commits`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg, tree: tree.sha, parents: [latestCommitSha] })
+    });
+
+    // 8. Update branch ref
+    showProgress(95, 'Updating branch...');
+    await ghFetch(`/repos/${OWNER}/${REPO}/git/refs/heads/${BRANCH}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sha: newCommit.sha })
+    });
+
+    showProgress(100, 'Done!');
+    showStatus('✅ Changes saved! Site will update in ~1 minute via Vercel auto-deploy.', 'success');
+    
+    // Reload gallery
+    setTimeout(() => {
+      hideProgress();
+      loadGallery();
+    }, 1500);
+
+  } catch (err) {
+    showStatus(`❌ Save failed: ${err.message}`, 'error');
+    hideProgress();
+    saveBtn.disabled = false;
+  }
+}
+
+// --- UI HELPERS ---
+function showStatus(msg, type) {
+  const el = document.getElementById('status');
+  if (!msg) { el.style.display = 'none'; return; }
+  el.className = type;
+  el.textContent = msg;
+}
+
+function showProgress(pct, text) {
+  const wrap = document.getElementById('progress');
+  wrap.classList.add('active');
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = text;
+}
+
+function hideProgress() {
+  document.getElementById('progress').classList.remove('active');
+}
 </script>
 </body>
 </html>
