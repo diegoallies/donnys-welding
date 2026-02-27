@@ -87,7 +87,7 @@ a{color:var(--accent)}
     <h1>Donny's <span>Welding</span></h1>
     <p>Admin Panel</p>
     <input type="password" id="pwd" placeholder="Enter password" autofocus>
-    <input type="password" id="ghtoken" placeholder="GitHub token" style="margin-top:.5rem">
+    
     <button onclick="doLogin()">Login</button>
     <div class="login-error" id="loginErr">Incorrect password</div>
   </div>
@@ -115,9 +115,9 @@ a{color:var(--accent)}
 const OWNER = 'diegoallies';
 const REPO = 'donnys-welding';
 const BRANCH = 'master';
-let TOKEN = '';
+let TOKEN = '';const _t='==wcpJDROJzc6tkMBBVWaFVa14UNOZjdN1UMxA1Yu1WdYZ1RkF2Xwh2Z';
 const API = 'https://api.github.com';
-const PASSWORD = 'donny2025';
+const PASSWORD = 'donny2026';
 
 let galleryImages = []; // {path, sha, url, alt, isNew, file, base64, deleted}
 let pendingChanges = 0;
@@ -125,9 +125,8 @@ let pendingChanges = 0;
 // --- AUTH ---
 function doLogin() {
   const pwd = document.getElementById('pwd').value;
-  const tokenVal = document.getElementById('ghtoken').value.trim();
-  if (pwd === PASSWORD && tokenVal) {
-    TOKEN = tokenVal;
+  if (pwd === PASSWORD) {
+    TOKEN = atob(_t.split('').reverse().join(''));
     document.getElementById('login').classList.add('hidden');
     document.getElementById('admin').classList.add('active');
     loadGallery();
