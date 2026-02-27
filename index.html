@@ -459,6 +459,9 @@ function closeLightbox(){document.getElementById('lightbox').classList.remove('a
 function navLightbox(d){current=(current+d+images.length)%images.length;document.getElementById('lightboxImg').src=images[current]}
 document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLightbox()});
 document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('active'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='ArrowRight')navLightbox(1)});
+
+// Hide gallery items marked as hidden in admin panel
+(function(){try{const h=JSON.parse(localStorage.getItem('donnys-hidden-gallery'))||[];if(h.length){document.querySelectorAll('.gallery-item img').forEach(img=>{const src=img.getAttribute('src');if(h.includes(src))img.closest('.gallery-item').style.display='none'})}}catch(e){}})();
 </script>
 </body>
 </html>
