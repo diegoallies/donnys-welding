@@ -346,6 +346,9 @@ footer a{color:var(--accent)}
     <div class="gallery-item fade-in" onclick="openLightbox(58)"><img src="images/diamond-security-door.jpg" alt="Diamond pattern security door" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
     <div class="gallery-item fade-in" onclick="openLightbox(59)"><img src="images/carport-gate-system.jpg" alt="Carport gate system" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
     <div class="gallery-item fade-in" onclick="openLightbox(60)"><img src="images/solid-panel-gate.jpg" alt="Solid panel security gate" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(61)"><img src="images/gate-blue-sheeting-wood.jpg" alt="Gate with blue sheeting and wooden slats" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(62)"><img src="images/double-gate-diamond-mesh.jpg" alt="Double gate with diamond mesh" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
+    <div class="gallery-item fade-in" onclick="openLightbox(63)"><img src="images/pallet-breaker-tool.jpg" alt="Custom welded pallet breaker tool" loading="lazy"><div class="overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div></div>
   </div>
 </div>
 </section>
@@ -452,6 +455,7 @@ const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isInters
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 
 // Lightbox
+const images=[...document.querySelectorAll('.gallery-item img')].map(img=>img.src);
 let current=0;
 function openLightbox(i){current=i;document.getElementById('lightboxImg').src=images[i];document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
 function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
